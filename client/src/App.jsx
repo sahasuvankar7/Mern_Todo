@@ -48,7 +48,7 @@ function App() {
 
   const addToDB = async (task) => {
     try {
-      const response = await axios.post(`${window.location.origin}/api/todos`, {
+      const response = await axios.post(`https://mern-todo-api-five.vercel.app/api/todos`, {
         task,
       });
       return response;
@@ -60,7 +60,7 @@ function App() {
 
   const retrieveData = async () => {
     try {
-      const response = await axios.get(`${window.location.origin}/api/todos`);
+      const response = await axios.get(`https://mern-todo-api-five.vercel.app/api/todos`);
       dispatch({ type: "getData", payload: response.data });
     } catch (err) {
       console.error(err);
@@ -85,7 +85,7 @@ function App() {
 
   const handleDeleteTask = async (id) => {
     try {
-      const response = await axios.delete(`${window.location.origin}/api/todos/${id}`);
+      const response = await axios.delete(`https://mern-todo-api-five.vercel.app/api/todos/${id}`);
       await retrieveData();
     } catch (err) {
       console.error(err);
@@ -101,7 +101,7 @@ function App() {
     console.log("id : ", id);
     console.log("edited task : ", editedTask);
     try {
-      const response = await axios.put(`${window.location.origin}/api/todos/${id}`, { task: editedTask });
+      const response = await axios.put(`https://mern-todo-api-five.vercel.app/api/todos/${id}`, { task: editedTask });
 
       // in axios when we update the existing data in database with need pass extrav additional data or information related information along with 'http' link
       await retrieveData();
