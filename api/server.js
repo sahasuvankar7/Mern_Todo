@@ -8,7 +8,10 @@ const app = express();
 const models = require("./models/todo");
 const todo = models.Todo;
 
-app.use(cors({ credentials: true }));
+app.use(cors({ 
+  origin:['https://mern-todo-client-rho.vercel.app'],
+  methods: ['GET','POST','PUT','DELETE'],
+  credentials: true }));
 app.use(express.json());
 // app.use(express.static(process.env.PUBLIC_DIR))
 
